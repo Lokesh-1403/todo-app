@@ -1,1 +1,46 @@
-# todo-app
+# todo-app<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do App</title>
+</head>
+<body>
+
+<h2>My To-Do List</h2>
+
+<input type="text" id="taskInput" placeholder="Enter task">
+<button onclick="addTask()">Add</button>
+
+<ul id="taskList"></ul>
+
+<script>
+function addTask() {
+    let input = document.getElementById("taskInput");
+    let task = input.value;
+
+    if(task === "") {
+        alert("Enter a task!");
+        return;
+    }
+
+    let li = document.createElement("li");
+    li.textContent = task;
+
+    li.onclick = function() {
+        this.style.textDecoration = "line-through";
+    }
+
+    let delBtn = document.createElement("button");
+    delBtn.textContent = "Delete";
+    delBtn.onclick = function() {
+        li.remove();
+    }
+
+    li.appendChild(delBtn);
+    document.getElementById("taskList").appendChild(li);
+
+    input.value = "";
+}
+</script>
+
+</body>
+</html>
